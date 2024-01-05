@@ -305,7 +305,7 @@ hr {
     display: grid;
     grid-template-columns: 1fr 400px;
     gap: 35px;
-    justify-self: space-between;
+    justify-content: space-between;
     background-color: #1a1c20;
     padding: 15px;
     transition: transform 0.5s;
@@ -331,14 +331,12 @@ hr {
         position: relative;
     }
 
-    /*.sobre-mim-graduacao::before {
-  content: "";
-  position: absolute;
-  background-color: #ff014f;
-  width: 3px;
-  height: 100vh;
-  overflow: hidden;
-}*/
+   .sobre-mim-graduacao {
+  position: relative;
+  margin-top: -300px;
+  width: 100%;
+  height: 100%;
+}
 
     .sobre-mim p {
         font-size: 1.25rem;
@@ -500,5 +498,634 @@ hr {
 
     .footer-button {
         padding-bottom: 25px;
+    }
+}
+
+.titulo {
+    opacity: 1;
+    animation: titulo 5s ease-out;
+}
+.col {
+    justify-content: space-between;
+    width: 30%;
+    margin: 0 50px;
+    position: relative;
+    float: left;
+    font-size: 12px;
+    line-height: 2em;
+    padding: 80% 0;
+} 
+/*.col { width:101%; }*/
+.skill {
+    list-style: none;
+    padding-top: 30px;
+}
+
+    .skill li {
+        margin-bottom: 70px;
+        background: #030303;
+        height: 6px;
+        border-radius: 3px;
+        border-left: 1px solid #111;
+        border-top: 1px solid #111;
+        border-right: 1px solid #333;
+        border-bottom: 1px solid #333;
+    }
+
+        .skill li em {
+            position: relative;
+            font-style: normal;
+            font-size: 11px;
+            text-align: center;
+            color: #dedede;
+            top: -28px;
+        }
+
+
+
+/*programming*/
+
+#programmingHeader {
+    position: relative;
+    font-size: 2.2em;
+    font-weight: normal;
+    padding: 10px 0px 16px 0;
+    margin: 0 0 30px;
+    text-align: center;
+    background: #000;
+    border-radius: 2px ;
+}
+h2.programming {
+    color: #2187e7;
+    text-shadow: 1px 1px 5px #000, 0 0 10px #2187e7, 0 0 20px #2187e7;
+    border: 1px solid #2187e7;
+    box-shadow: 0px 0px 50px -8px #2187e7;
+    padding:20px;
+}
+.containerProgramming {
+    display: flex;
+    justify-content: space-between;
+    max-width: 300%;
+    max-height: 100%;
+    width: 150%;
+    height: 10%;
+    position: relative;
+    float: right;
+    right: 825px;
+    padding: 20px;
+    margin: -150px 0;
+    overflow:initial;
+}
+@keyframes portuguese {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+@keyframes english {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+@keyframes spanish {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 90%;
+    }
+}
+@keyframes tagalog {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 30%;
+    }
+}
+@keyframes csharp{
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 85%;
+    }
+}
+@keyframes cplus {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 70%;
+    }
+}
+
+@keyframes python {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 68%;
+    }
+}
+
+@keyframes vba {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 65%;
+    }
+}
+
+@keyframes java {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 60%;
+    }
+}
+
+@keyframes javascript {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 65%;
+    }
+}
+@keyframes css {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 85%;
+    }
+}
+
+@keyframes html {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 80%;
+    }
+}
+
+@keyframes bootstrap {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 40%;
+    }
+}
+
+.portuguese {
+    width: 100%;
+    animation: portuguese 2s ease-out;
+}
+.english {
+    width: 100%;
+    animation: english 2s ease-out;
+}
+
+.spanish {
+    width: 90%;
+    animation: spanish 2s ease-out;
+}
+.tagalog {
+    width: 30%;
+    animation: tagalog 2s ease-out;
+}
+.csharp {
+    width: 85%;
+    animation: csharp 2s ease-out;
+}
+.cplus {
+    width: 70%;
+    animation: cplus 2s ease-out;
+}
+
+.python {
+    width: 68%;
+    animation: python 2s ease-out;
+}
+.vba {
+    width: 65%;
+    animation: vba 2s ease-out;
+}
+
+.java {
+    width: 60%;
+    animation: java 2s ease-out;
+}
+
+.javascript {
+    width: 65%;
+    animation: javascript 2s ease-out;
+}
+.css {
+    width: 85%;
+    animation: css 2s ease-out;
+}
+
+.html {
+    width: 80%;
+    animation: html 2s ease-out;
+}
+
+.bootstrap {
+    width: 40%;
+    animation: bootstrap 2s ease-out;
+}
+.blueline {
+    height: 3px;
+    margin: 2px 0;
+    background: #2187e7;
+    position: absolute;
+    box-shadow: 0px 0px 10px 1px rgba(0,198,255,0.6);
+}
+
+
+/*platforms*/
+h2.plataformas {
+    border: 1px solid #9ACD32;
+    box-shadow: 0px 0px 50px -8px #9ACD32;
+    color: #9ACD32;
+    text-shadow: 1px 1px 5px #000, 0 0 10px #9ACD32, 0 0 20px #9ACD32;
+}
+.greenline {
+    height: 3px;
+    margin: 2px 0;
+    background: #9ACD32;
+    position: absolute;
+    box-shadow: 0px 0px 10px 1px rgba(173, 255, 47,0.4);
+
+}
+.windows {
+    width: 100%;
+    animation: windows 2s ease-out;
+}
+
+.linux {
+    width: 70%;
+    animation: linux 2s ease-out;
+}
+
+.android {
+    width: 100%;
+    animation: android 2s ease-out;
+}
+
+.ios {
+    width: 90%;
+    animation: ios 2s ease-out;
+}
+
+.macos {
+    width: 70%;
+    animation: macos 2s ease-out;
+}
+.vmware {
+    width: 75%;
+    animation: vmware 2s ease-out;
+}
+
+.googleworkspace {
+    width: 85%;
+    animation: googleworkspace 2s ease-out;
+}
+
+.horizonworkrooms {
+    width: 95%;
+    animation: horizonworkrooms 2s ease-out;
+}
+
+.git {
+    width: 70%;
+    animation: git 2s ease-out;
+}
+
+.github {
+    width: 70%;
+    animation: github 2s ease-out;
+}
+
+@keyframes windows {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes linux {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 70%;
+    }
+}
+
+@keyframes android {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes ios {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 90%;
+    }
+}
+
+@keyframes macos {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 70%;
+    }
+}
+@keyframes vmware {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 75%;
+    }
+}
+
+@keyframes googleworkspace {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 85%;
+    }
+}
+
+@keyframes horizonworkrooms {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 95%;
+    }
+}
+
+@keyframes git {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 70%;
+    }
+}
+
+@keyframes github {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 70%;
+    }
+}
+
+/*applications*/
+h2.programas {
+    border: 1px solid #FF4500;
+    box-shadow: 0px 0px 50px -8px #FF4500;
+    color: #FF4500;
+    text-shadow: 1px 1px 5px #000, 0 0 10px #FF4500, 0 0 20px #FF4500;
+}
+.vstudio {
+    width: 90%;
+    animation: vstudio 2s ease-out;
+}
+
+.anaconda {
+    width: 70%;
+    animation: anaconda 2s ease-out;
+}
+
+.pycharm {
+    width: 50%;
+    animation: pycharm 2s ease-out;
+}
+
+.sublimetext {
+    width: 90%;
+    animation: sublimetext 2s ease-out;
+}
+
+.photoshop {
+    width: 85%;
+    animation: photoshop 2s ease-out;
+}
+.microsoftoffice {
+    width: 100%;
+    animation: microsoftoffice 2s ease-out;
+}
+
+.unity2d {
+    width: 100%;
+    animation: unity2d 2s ease-out;
+}
+
+.unity3d {
+    width: 75%;
+    animation: unity3d 2s ease-out;
+}
+
+.unrealengine {
+    width: 65%;
+    animation: unreal 2s ease-out;
+}
+
+.construct {
+    width: 75%;
+    animation: construct 2s ease-out;
+}
+
+    @keyframes vstudio {
+        0% {
+            width: 0px;
+        }
+
+        100% {
+            width: 90%;
+        }
+    }
+
+    @keyframes anaconda {
+        0% {
+            width: 0px;
+        }
+
+        100% {
+            width: 70%;
+        }
+    }
+
+    @keyframes pycharm {
+        0% {
+            width: 0px;
+        }
+
+        100% {
+            width: 50%;
+        }
+    }
+
+    @keyframes sublimetext {
+        0% {
+            width: 0px;
+        }
+
+        100% {
+            width: 90%;
+        }
+    }
+
+    @keyframes photoshop {
+        0% {
+            width: 0px;
+        }
+
+        100% {
+            width: 85%;
+        }
+    }
+@keyframes microsoftoffice {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes unity2d {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes unity3d {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 75%;
+    }
+}
+
+@keyframes unreal {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 65%;
+    }
+}
+
+@keyframes construct {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 75%;
+    }
+}
+
+    .redline {
+    height: 3px;
+    margin: 2px 0;
+    background: #FF4500;
+    position: absolute;
+    box-shadow: 0px 0px 10px 1px rgba(255, 69, 0,0.4);
+}
+
+/*media queries*/
+@media (max-width: 1200px) {
+    h2 {
+        font-size: 2.2em;
+    }
+}
+
+@media (max-width: 980px) {
+    h2 {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 767px) {
+    h2 {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 580px) {
+    h2 {
+        font-size: 1.1em;
+        padding: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 2.2em;
+        padding: 10px 0 15px 0;
+    }
+
+    .col {
+        width: 90%;
     }
 }
