@@ -122,7 +122,7 @@ hr {
     color: #ffffff;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 960px) {
     .header-logo {
         margin-left: auto;
         margin-right: auto;
@@ -263,39 +263,6 @@ hr {
     }
 }
 
-@media (max-width: 800px) {
-    .topo-descricao {
-        grid-template-columns: 1fr;
-    }
-
-    .topo-descricao {
-        text-align: center;
-        padding: 0;
-        margin: 10px 25px;
-    }
-
-        .topo-descricao img {
-            width: 70vw;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-    .topo-skill {
-        grid-template-columns: 1fr;
-        margin: 10px 25px;
-        text-align: center;
-    }
-
-        .topo-skill img {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-    .topo-descricao p {
-        font-size: 1.75rem;
-    }
-}
-
 .main-bg {
     margin-top: 15px;
     margin-bottom: 35px;
@@ -354,25 +321,6 @@ hr {
     grid-column: -1 / 1;
 }
 
-@media (max-width: 800px) {
-    .sobre-mim {
-        grid-template-columns: 1fr;
-        padding: 15px;
-        margin: 10px 25px;
-    }
-
-        .sobre-mim h2 {
-            text-align: center;
-        }
-
-    .sobre-mim-graduacao h3 {
-        text-align: center;
-    }
-
-    .sobre-mim-graduacao p {
-        text-align: center;
-    }
-}
 
 .projetos {
     margin-top: 35px;
@@ -425,17 +373,6 @@ hr {
     position: relative;
 }
 
-@media (max-width: 800px) {
-    .projetos {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 10px 25px;
-    }
-
-        .projetos img {
-            width: 100vw;
-        }
-}
 
 .redes-sociais {
     margin-bottom: 15px;
@@ -490,16 +427,6 @@ hr {
     gap: 15px;
 }
 
-@media (max-width: 800px) {
-    .footer {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .footer-button {
-        padding-bottom: 25px;
-    }
-}
 
 .titulo {
     opacity: 1;
@@ -544,7 +471,6 @@ hr {
 
 
 /*programming*/
-
 #programmingHeader {
     position: relative;
     font-size: 2.2em;
@@ -573,8 +499,9 @@ h2.programming {
     float: right;
     right: 825px;
     padding: 20px;
-    margin: -150px 0;
-    overflow:initial;
+    margin: -120px 0 -240px;
+    overflow:visible;
+
 }
 @keyframes portuguese {
     0% {
@@ -1094,6 +1021,120 @@ h2.programas {
 }
 
 /*media queries*/
+
+
+@media (max-width: 800px) {
+    .footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-button {
+        padding-bottom: 25px;
+    }
+    .sobre-mim {
+        grid-template-columns: 1fr;
+        padding: 15px;
+        margin: 10px 25px;
+    }
+
+        .sobre-mim h2 {
+            text-align: center;
+        }
+
+    .sobre-mim-graduacao h3 {
+        text-align: center;
+    }
+
+    .sobre-mim-graduacao p {
+        text-align: center;
+    }
+    .topo-descricao {
+        grid-template-columns: 1fr;
+    }
+
+    .topo-descricao {
+        text-align: center;
+        padding: 0;
+        margin: 10px 25px;
+    }
+
+        .topo-descricao img {
+            width: 70vw;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    .topo-skill {
+        grid-template-columns: 1fr;
+        margin: 10px 25px;
+        text-align: center;
+    }
+
+        .topo-skill img {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    .topo-descricao p {
+        font-size: 1.75rem;
+    }
+    .projetos {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10px 25px;
+    }
+
+    .projetos img {
+        width: 100vw;
+    }
+    .sobre-mim {
+        display: flex;
+        flex-wrap: wrap;   
+        margin: 10px 25px;
+    }
+
+    .containerProgramming {
+        display: flex;
+        flex-wrap: wrap; /* Ensure items wrap within the container */
+        flex-direction: column;
+        justify-content: space-between; /* Center the items within the container */
+        width: 100%; /* Make sure it takes full width of the parent */
+        margin: 0px 0 0 0; /* Reset margins to default */
+        padding: 0px; /* Add padding for better spacing */
+        float: none; /* Remove float */
+        position: static; /* Reset position */
+        overflow: hidden; /* Hide any overflow content */
+    }
+    .containerProgramming .col {
+        width: 100%;
+        margin: -200px 0 0 0; /* Adjust this value to control spacing between columns */
+    }
+
+    .skill {
+        padding: 0; /* Remove top padding to control spacing within lists */
+        margin: 0 0 -200px 0;
+    }
+
+    .skill li {
+        margin-bottom: 70px; /* Adjust this value to control spacing between skill items */
+    }
+    .sobre-mim-graduacao {
+        margin-top: 20px; /* Add top margin to create space above the education section */
+        padding: 10px; /* Add padding for better spacing */
+    }
+
+    .sobre-mim-graduacao h2,
+    .sobre-mim-graduacao h3,
+    .sobre-mim-graduacao p {
+        margin: 0 0 10px 0; /* Add bottom margin for spacing between elements */
+    }
+
+    .hr-graduacao {
+        border: 1px solid #333; /* Adjust the style of the horizontal rule */
+    }
+}
+
 @media (max-width: 1200px) {
     h2 {
         font-size: 2.2em;
