@@ -1,0 +1,129 @@
+
+/* General Body Styling */
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #ff4444;
+}
+
+/* Canvas battlefield background */
+canvas#battlefield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Toggle block styling */
+.toggle-btn {
+  padding: 2px 8px;
+  font-size: 16px;
+  background-color: #666;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-left: 5px;
+  border-radius: 3px;
+}
+
+.toggle-content {
+  margin-top: 10px;
+}
+
+.toggle-content.hidden {
+  display: none;
+}
+
+/* Buttons and form elements */
+.btn-primary {
+  background-color: #ff4444;
+  border: none;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #cc0000;
+}
+
+.btn-danger {
+  background-color: #990000;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #660000;
+}
+
+.form-group {
+  background-color: rgba(30, 30, 30, 0.9);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+select[multiple] {
+  height: 160px;
+}
+
+.container-ui {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 30px auto;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+body {
+  background-color: black;
+}
+
+canvas#battlefield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+
+.btn-primary,
+.btn-secondary {
+  background-color: #ff4444 !important;
+  border: none !important;
+  color: white;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  background-color: #cc0000 !important;
+}
+
+.btn-danger {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #990000;
+}
+
+html, body {
+  height: 100%;
+  background-color: black !important;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}

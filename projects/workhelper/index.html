@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Work Helper Tool</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 class="text-white">Work Helper Tool</h1>
+
+    <!-- Full sections restored -->
+
+    <!-- Reset All Button -->
+    <div class="form-group">
+      <button id="resetBtn" class="btn btn-danger mt-3">Reset All</button>
+    </div>
+  </div>
+
+    <!-- 106S Button -->
+    <div class="form-group toggle-block">
+      <div class="d-flex justify-content-between align-items-center">
+        <label class="text-white">106S</label>
+        <button class="btn btn-sm btn-secondary toggle-btn" type="button">−</button>
+      </div>
+      <div class="toggle-content">
+        <button id="copy106SBtn" class="btn btn-primary mt-2">Copy 106S</button>
+      </div>
+    </div>
+
+    <!-- Name Section -->
+    <div class="form-group toggle-block">
+      <div class="d-flex justify-content-between align-items-center">
+        <label for="name" class="text-white">Name</label>
+        <button class="btn btn-sm btn-secondary toggle-btn" type="button">−</button>
+      </div>
+      <div class="toggle-content">
+        <input id="name" class="form-control" type="text" placeholder="Enter name" />
+        <button id="copyNameBtn" class="btn btn-primary mt-2">Copy Name</button>
+      </div>
+    </div>
+
+    <!-- Center Name Section -->
+    <div class="form-group toggle-block">
+      <div class="d-flex justify-content-between align-items-center">
+        <label for="centerName" class="text-white">Center Name</label>
+        <button class="btn btn-sm btn-secondary toggle-btn" type="button">−</button>
+      </div>
+      <div class="toggle-content">
+        <input id="centerName" class="form-control" type="text" placeholder="e.g., Wichita Center" />
+        <button id="copyCenterBtn" class="btn btn-primary mt-2">Copy Center Name</button>
+      </div>
+    </div>
+
+ <!-- Phone Format Section -->
+    <div class="form-group toggle-block">
+      <div class="d-flex justify-content-between align-items-center">
+        <label for="phoneInput" class="text-white">Phone Numbers</label>
+        <button class="btn btn-sm btn-secondary toggle-btn" type="button">−</button>
+      </div>
+      <div class="toggle-content">
+        <input id="phoneInput" class="form-control" type="text" placeholder="Paste phone numbers here" />
+        <button id="copyPhoneBtn" class="btn btn-primary mt-2">Copy Formatted Phone</button>
+      </div>
+    </div>
+
+    <!-- Time Section -->
+    <div class="form-group toggle-block">
+      <div class="d-flex justify-content-between align-items-center">
+        <label class="text-white">Time</label>
+        <button class="btn btn-sm btn-secondary toggle-btn" type="button">−</button>
+      </div>
+      <div class="toggle-content">
+        <div class="form-row">
+          <div class="col">
+            <label for="fromHour" class="text-white">From Hour</label>
+            <select id="fromHour" class="form-control">
+              <option>12</option><option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8</option><option>9</option>
+              <option>10</option><option>11</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="fromMinute" class="text-white">From Minute</label>
+            <select id="fromMinute" class="form-control">
+              <option>00</option><option>05</option><option>10</option><option>15</option><option>20</option>
+              <option>25</option><option>30</option><option>35</option><option>40</option><option>45</option>
+              <option>50</option><option>55</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="toHour" class="text-white">To Hour</label>
+            <select id="toHour" class="form-control">
+              <option>12</option><option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8</option><option>9</option>
+              <option>10</option><option>11</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="toMinute" class="text-white">To Minute</label>
+            <select id="toMinute" class="form-control">
+              <option>00</option><option>05</option><option>10</option><option>15</option><option>20</option>
+              <option>25</option><option>30</option><option>35</option><option>40</option><option>45</option>
+              <option>50</option><option>55</option>
+            </select>
+          </div>
+        </div>
+        <button id="copyTimeBtn" class="btn btn-primary mt-2">Copy Time</button>
+      </div>
+    </div>
+
+    <!-- Languages Section -->
+    <div class="form-group toggle-block">
+      <div class="d-flex justify-content-between align-items-center">
+        <label for="languageSelect" class="text-white">Languages</label>
+        <button class="btn btn-sm btn-secondary toggle-btn" type="button">−</button>
+      </div>
+      <div class="toggle-content">
+        <select id="languageSelect" class="form-control" multiple size="10">
+          <option>English</option><option>Spanish</option><option>Mandarin</option><option>Hindi</option>
+          <option>Arabic</option><option>Bengali</option><option>Portuguese</option><option>Russian</option>
+          <option>Japanese</option><option>German</option><option>Korean</option><option>Vietnamese</option>
+          <option>French</option><option>Italian</option><option>ASL</option><option>Turkish</option>
+          <option>Urdu</option><option>Farsi</option><option>Swahili</option><option>Haitian Creole</option>
+        </select>
+        <button id="copyLanguagesBtn" class="btn btn-primary mt-2">Copy Languages</button>
+      </div>
+    </div>
+
+  <canvas id="battlefield"></canvas>
+
+  <script src="js/main.js"></script>
+  <script src="js/timeFormatter.js"></script>
+  <script src="js/languageSelector.js"></script>
+  <script src="js/phoneFormatter.js"></script>
+  <script src="js/warBackground.js"></script>
+</body>
+</html>
