@@ -6,7 +6,6 @@ html, body {
   overflow-x: hidden; /* Prevent horizontal scroll */
   color: #fff;
   font-family: Arial, sans-serif;
-  font-size: 14px; /* Base font size for further rem calculations if needed, though we use px/rem directly */
 }
 
 body {
@@ -16,17 +15,17 @@ body {
 /* Toggle War Button Styling */
 #toggleWarBtn {
   position: fixed;
-  top: 6px; 
-  left: 6px; 
+  top: 10px; 
+  left: 10px; 
   z-index: 1001; 
-  padding: 3px 6px; 
+  padding: 5px 10px; /* Slightly smaller */
   background-color: #ff3333; 
   color: white;
   border: 1px solid #ff6666;
-  border-radius: 3px; 
+  border-radius: 3px; /* Smaller radius */
   cursor: pointer;
-  font-size: 10px; /* Very small */
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2); 
+  font-size: 12px; /* Smaller font */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
   transition: background-color 0.2s ease;
 }
 
@@ -46,9 +45,8 @@ body {
 h1 {
   text-align: center;
   color: #ff4444; 
-  margin-top: 5px; 
-  margin-bottom: 8px; /* Reduced margin */
-  font-size: 1.3rem; /* Smaller h1 */
+  margin-bottom: 10px; /* Reduced */
+  font-size: 1.5rem; /* Reduced */
 }
 
 canvas#battlefield {
@@ -61,44 +59,45 @@ canvas#battlefield {
   background-color: transparent; 
 }
 
+/* Panel dimensions from previous step (good) */
 .container {
   position: relative; 
   z-index: 1; 
   width: 85vw; 
-  max-width: 650px; /* Further reduced max-width */
-  max-height: 88vh; /* Max height to leave space for ground (approx 12vh for margins & ground) */
+  max-width: 650px; 
+  max-height: 88vh; 
   overflow-y: auto; 
-  
-  margin: 2vh auto; /* Small vertical margin */
-  padding: 8px 10px; /* Minimal padding */
-  
-  background-color: rgba(15, 23, 42, 0.9); /* Slightly more opaque for readability */
+  margin: 1.5vh auto; 
+  padding: 8px 10px; 
+  background-color: rgba(15, 23, 42, 0.9); 
   border-radius: 6px; 
   box-shadow: 0 3px 12px rgba(255, 68, 68, 0.2); 
   display: flex;
   flex-direction: column;
 }
 
+/* --- CONTENT STYLING MODIFICATIONS FOR ~30% REDUCTION --- */
+
 /* Toggle block styling */
 .toggle-block {
-  margin-bottom: 4px; /* Minimal margin */
+  margin-bottom: 5px; /* Was 8px */
 }
 .d-flex.justify-content-between.align-items-center {
-  padding: 1px 0; /* Minimal padding for the header */
-  min-height: 24px; /* Reduced min height */
+  padding: 2px 0; /* Was 4px */
+  min-height: 26px; /* Ensure touch target */
 }
 
 
 .toggle-btn {
-  padding: 0px 4px; /* Minimal padding */
-  font-size: 11px; /* Very small */
-  line-height: 1.1; 
+  padding: 1px 4px; /* Was 2px 6px */
+  font-size: 12px; /* Was 14px */
+  line-height: 1.2;
   background-color: #555; 
   border: 1px solid #777;
   color: white;
   cursor: pointer;
-  margin-left: 5px; 
-  border-radius: 2px; /* Smaller radius */
+  margin-left: 6px; /* Was 8px */
+  border-radius: 3px; /* Was 4px */
   transition: background-color 0.2s ease;
 }
 
@@ -107,10 +106,10 @@ canvas#battlefield {
 }
 
 .toggle-content {
-  margin-top: 3px; 
-  padding: 6px; /* Minimal padding */
-  background-color: rgba(30, 38, 58, 0.75); 
-  border-radius: 3px; 
+  margin-top: 4px; /* Was 6px */
+  padding: 7px; /* Was 10px */
+  background-color: rgba(30, 38, 58, 0.7); 
+  border-radius: 4px; /* Was 5px */
   border: 1px solid rgba(56, 70, 100, 0.5);
 }
 
@@ -120,81 +119,81 @@ canvas#battlefield {
 
 /* Form elements and labels styling */
 .form-group { 
-  margin-bottom: 3px; /* Minimal margin */
+  margin-bottom: 4px; /* Was 6px */
 }
 
 .form-group label, label.text-white { 
-    color: #dde4ed; /* Slightly brighter for small text */
-    font-weight: normal; 
-    margin-bottom: 1px; 
-    font-size: 0.7rem; /* Very small label font size */
-    line-height: 1.2;
+    color: #e2e8f0; 
+    font-weight: normal; /* Lighter */
+    margin-bottom: 1px; /* Was 0.2rem */
+    font-size: 0.75rem; /* Was 0.85rem */
+    line-height: 1.3;
 }
 
 .form-control {
     background-color: #1e293b; 
     color: #e2e8f0; 
     border: 1px solid #334155; 
-    border-radius: 2px; 
-    padding: 0.2rem 0.3rem; /* Minimal padding */
-    font-size: 0.75rem; /* Very small font size for inputs */
-    height: calc(1.4em + 0.4rem + 2px); /* Adjusted for smaller font */
+    border-radius: 3px; /* Was 4px */
+    padding: 0.2rem 0.4rem; /* Was 0.3rem 0.5rem */
+    font-size: 0.78rem; /* Was 0.85rem */
+    height: auto; /* Let padding define height */
     line-height: 1.3;
 }
 
 .form-control::placeholder {
     color: #64748b; 
-    font-size: 0.75rem;
+    font-size: 0.78rem; /* Match input */
 }
 
 .form-control:focus {
     background-color: #28354e;
     border-color: #ff4444;
-    box-shadow: 0 0 0 0.1rem rgba(255, 68, 68, 0.25); 
+    box-shadow: 0 0 0 0.1rem rgba(255, 68, 68, 0.25); /* Smaller shadow */
     color: #e2e8f0;
 }
 
 select[multiple] {
-  height: 65px; /* Extremely reduced height */
+  height: 70px; /* Was 100px */
   background-color: #1e293b;
   color: #e2e8f0;
   border: 1px solid #334155;
-  font-size: 0.75rem; 
-  padding: 0.1rem; 
+  font-size: 0.78rem; /* Match input */
+  padding: 0.1rem;
 }
 select[multiple] option {
-  padding: 0px 2px; /* Minimal option padding */
-  font-size: 0.7rem; /* Very small option text */
+  padding: 1px 2px;
+  font-size: 0.75rem;
 }
 
 
 /* Time section specific adjustments */
 .toggle-content .form-row {
-  margin-left: -2px; 
-  margin-right: -2px; 
+  margin-left: -3px; /* Was -5px */
+  margin-right: -3px; /* Was -5px */
 }
 .toggle-content .form-row .col {
-  padding-left: 2px; 
-  padding-right: 2px; 
-  margin-bottom: 1px; 
+  padding-left: 3px; /* Was 5px */
+  padding-right: 3px; /* Was 5px */
+  margin-bottom: 2px;
 }
 .toggle-content .form-row .col select.form-control {
-    padding: 0.15rem 0.25rem; 
-    font-size: 0.7rem; 
-    height: calc(1.4em + 0.3rem + 2px); 
+    padding: 0.15rem 0.3rem; /* Was 0.25rem 0.4rem */
+    font-size: 0.72rem; /* Was 0.8rem */
+    height: auto;
 }
 .toggle-content .form-row .col label.text-white {
-    font-size: 0.65rem; /* Extremely small */
+    font-size: 0.7rem; /* Was 0.75rem */
     margin-bottom: 0; 
 }
 
 
 /* Buttons */
 .btn { 
-    border-radius: 2px; 
-    padding: 0.2rem 0.4rem; /* Minimal padding */
-    font-weight: normal; 
-    font-size: 0.75rem; /* Very small */
+    border-radius: 3px; /* Was 4px */
+    padding: 0.2rem 0.5rem; /* Was 0.3rem 0.6rem */
+    font-weight: normal; /* Lighter */
+    font-size: 0.78rem; /* Was 0.85rem */
     line-height: 1.3;
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
@@ -209,28 +208,28 @@ select[multiple] option {
 }
 .btn-primary:hover, .btn-secondary:hover { background-color: #cc0000 !important; }
 
-.btn-danger { /* Reset All button */
+.btn-danger { 
   background-color: #dc3545; color: white; border: none;
-  padding: 0.3rem 0.6rem; /* Slightly more padding than other buttons */
-  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem; /* Was 0.4rem 0.8rem */
+  font-size: 0.82rem; /* Was 0.9rem */
 }
 .btn-danger:hover { background-color: #c82333; }
 
 #resetBtn {
-    margin-top: 4px; 
-    margin-bottom: 6px; 
+    margin-bottom: 8px; /* Was 10px */
+    margin-top: 4px;
 }
 
-.toggle-content .btn-primary { /* Buttons inside toggle sections */
-    margin-top: 3px; 
+.toggle-content .btn-primary { 
+    margin-top: 4px; /* Was 6px */
 }
 
-.container > .form-group:first-of-type { /* This targets the Reset All button's container */
+.container > .form-group:first-of-type { 
     background-color: transparent; 
     padding: 0; 
     box-shadow: none; 
     border: none;
-    margin-bottom: 6px; 
+    margin-bottom: 8px; /* Was 10px */
 }
 
 .d-flex { align-items: center; }
