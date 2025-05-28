@@ -6,6 +6,7 @@ html, body {
   overflow-x: hidden; /* Prevent horizontal scroll */
   color: #fff;
   font-family: Arial, sans-serif;
+  font-size: 14px; /* Base font size for further rem calculations if needed, though we use px/rem directly */
 }
 
 body {
@@ -15,16 +16,16 @@ body {
 /* Toggle War Button Styling */
 #toggleWarBtn {
   position: fixed;
-  top: 8px; /* Even less from top */
-  left: 8px; /* Even less from left */
+  top: 6px; 
+  left: 6px; 
   z-index: 1001; 
-  padding: 4px 8px; /* Further reduced padding */
+  padding: 3px 6px; 
   background-color: #ff3333; 
   color: white;
   border: 1px solid #ff6666;
   border-radius: 3px; 
   cursor: pointer;
-  font-size: 11px; /* Further reduced font size */
+  font-size: 10px; /* Very small */
   box-shadow: 0 1px 2px rgba(0,0,0,0.2); 
   transition: background-color 0.2s ease;
 }
@@ -45,9 +46,9 @@ body {
 h1 {
   text-align: center;
   color: #ff4444; 
-  margin-top: 5px; /* Minimal top margin */
-  margin-bottom: 10px; /* Further reduced margin */
-  font-size: 1.5rem; /* Further smaller h1 */
+  margin-top: 5px; 
+  margin-bottom: 8px; /* Reduced margin */
+  font-size: 1.3rem; /* Smaller h1 */
 }
 
 canvas#battlefield {
@@ -64,40 +65,40 @@ canvas#battlefield {
   position: relative; 
   z-index: 1; 
   width: 85vw; 
-  max-width: 700px; /* Further reduced max-width */
-  max-height: 96vh; /* Allow container to use almost full viewport height */
+  max-width: 650px; /* Further reduced max-width */
+  max-height: 88vh; /* Max height to leave space for ground (approx 12vh for margins & ground) */
   overflow-y: auto; 
   
-  margin: 1vh auto; /* Minimal vertical margin */
-  padding: 10px 12px; /* Further reduced padding, more horizontal than vertical */
+  margin: 2vh auto; /* Small vertical margin */
+  padding: 8px 10px; /* Minimal padding */
   
-  background-color: rgba(15, 23, 42, 0.88); 
-  border-radius: 8px; 
-  box-shadow: 0 4px 15px rgba(255, 68, 68, 0.2); 
+  background-color: rgba(15, 23, 42, 0.9); /* Slightly more opaque for readability */
+  border-radius: 6px; 
+  box-shadow: 0 3px 12px rgba(255, 68, 68, 0.2); 
   display: flex;
   flex-direction: column;
 }
 
 /* Toggle block styling */
 .toggle-block {
-  margin-bottom: 5px; /* Further reduced margin */
+  margin-bottom: 4px; /* Minimal margin */
 }
 .d-flex.justify-content-between.align-items-center {
-  padding: 2px 0; /* Minimal padding for the header of toggle block */
-  min-height: 28px; /* Ensure a minimum touch target / height */
+  padding: 1px 0; /* Minimal padding for the header */
+  min-height: 24px; /* Reduced min height */
 }
 
 
 .toggle-btn {
-  padding: 1px 5px; /* Minimal padding */
-  font-size: 12px; /* Further reduced font size */
-  line-height: 1.2; /* Adjust line height for small button */
+  padding: 0px 4px; /* Minimal padding */
+  font-size: 11px; /* Very small */
+  line-height: 1.1; 
   background-color: #555; 
   border: 1px solid #777;
   color: white;
   cursor: pointer;
-  margin-left: 6px; /* Reduced margin */
-  border-radius: 3px;
+  margin-left: 5px; 
+  border-radius: 2px; /* Smaller radius */
   transition: background-color 0.2s ease;
 }
 
@@ -106,10 +107,10 @@ canvas#battlefield {
 }
 
 .toggle-content {
-  margin-top: 4px; /* Reduced margin */
-  padding: 8px; /* Further reduced padding */
-  background-color: rgba(30, 38, 58, 0.7); 
-  border-radius: 4px; /* Smaller radius */
+  margin-top: 3px; 
+  padding: 6px; /* Minimal padding */
+  background-color: rgba(30, 38, 58, 0.75); 
+  border-radius: 3px; 
   border: 1px solid rgba(56, 70, 100, 0.5);
 }
 
@@ -119,81 +120,82 @@ canvas#battlefield {
 
 /* Form elements and labels styling */
 .form-group { 
-  margin-bottom: 4px; /* Further reduced margin */
+  margin-bottom: 3px; /* Minimal margin */
 }
 
 .form-group label, label.text-white { 
-    color: #e2e8f0; 
-    font-weight: normal; /* Lighter font weight */
-    margin-bottom: 1px; /* Minimal bottom margin for labels */
-    font-size: 0.78rem; /* Further smaller label font size */
-    line-height: 1.3;
+    color: #dde4ed; /* Slightly brighter for small text */
+    font-weight: normal; 
+    margin-bottom: 1px; 
+    font-size: 0.7rem; /* Very small label font size */
+    line-height: 1.2;
 }
 
 .form-control {
     background-color: #1e293b; 
     color: #e2e8f0; 
     border: 1px solid #334155; 
-    border-radius: 3px; /* Smaller radius */
-    padding: 0.25rem 0.4rem; /* Further reduced padding */
-    font-size: 0.8rem; /* Further reduced font size for inputs */
-    height: calc(1.5em + 0.5rem + 2px); /* Bootstrap's default small input height */
-    line-height: 1.4;
+    border-radius: 2px; 
+    padding: 0.2rem 0.3rem; /* Minimal padding */
+    font-size: 0.75rem; /* Very small font size for inputs */
+    height: calc(1.4em + 0.4rem + 2px); /* Adjusted for smaller font */
+    line-height: 1.3;
 }
 
 .form-control::placeholder {
     color: #64748b; 
+    font-size: 0.75rem;
 }
 
 .form-control:focus {
     background-color: #28354e;
     border-color: #ff4444;
-    box-shadow: 0 0 0 0.1rem rgba(255, 68, 68, 0.25); /* Smaller shadow */
+    box-shadow: 0 0 0 0.1rem rgba(255, 68, 68, 0.25); 
     color: #e2e8f0;
 }
 
 select[multiple] {
-  height: 80px; /* Drastically reduced height */
+  height: 65px; /* Extremely reduced height */
   background-color: #1e293b;
   color: #e2e8f0;
   border: 1px solid #334155;
-  font-size: 0.8rem; /* Match input font size */
-  padding: 0.2rem; /* Minimal padding for select multiple */
+  font-size: 0.75rem; 
+  padding: 0.1rem; 
 }
 select[multiple] option {
-  padding: 1px 3px; /* Make options themselves more compact */
-  font-size: 0.78rem;
+  padding: 0px 2px; /* Minimal option padding */
+  font-size: 0.7rem; /* Very small option text */
 }
 
 
 /* Time section specific adjustments */
 .toggle-content .form-row {
-  margin-left: -3px; 
-  margin-right: -3px; 
+  margin-left: -2px; 
+  margin-right: -2px; 
 }
 .toggle-content .form-row .col {
-  padding-left: 3px; 
-  padding-right: 3px; 
-  margin-bottom: 2px; /* Add small margin for rows of selects */
+  padding-left: 2px; 
+  padding-right: 2px; 
+  margin-bottom: 1px; 
 }
 .toggle-content .form-row .col select.form-control {
-    padding: 0.2rem 0.3rem; 
-    font-size: 0.75rem; 
-    height: calc(1.5em + 0.4rem + 2px); /* Even smaller height */
+    padding: 0.15rem 0.25rem; 
+    font-size: 0.7rem; 
+    height: calc(1.4em + 0.3rem + 2px); 
 }
 .toggle-content .form-row .col label.text-white {
-    font-size: 0.7rem; 
+    font-size: 0.65rem; /* Extremely small */
     margin-bottom: 0; 
 }
 
 
 /* Buttons */
 .btn { 
-    border-radius: 3px; 
-    padding: 0.25rem 0.5rem; /* Further reduced padding */
-    font-weight: normal; /* Lighter font weight */
-    font-size: 0.8rem; /* Further reduced font size */
-    line-height: 1.4;
+    border-radius: 2px; 
+    padding: 0.2rem 0.4rem; /* Minimal padding */
+    font-weight: normal; 
+    font-size: 0.75rem; /* Very small */
+    line-height: 1.3;
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
@@ -209,18 +211,18 @@ select[multiple] option {
 
 .btn-danger { /* Reset All button */
   background-color: #dc3545; color: white; border: none;
-  padding: 0.35rem 0.7rem; /* Slightly more padding than other buttons */
-  font-size: 0.85rem;
+  padding: 0.3rem 0.6rem; /* Slightly more padding than other buttons */
+  font-size: 0.8rem;
 }
 .btn-danger:hover { background-color: #c82333; }
 
 #resetBtn {
-    margin-top: 5px; /* Add a bit of top margin */
-    margin-bottom: 8px; /* Reduced margin */
+    margin-top: 4px; 
+    margin-bottom: 6px; 
 }
 
 .toggle-content .btn-primary { /* Buttons inside toggle sections */
-    margin-top: 4px; /* Reduced margin */
+    margin-top: 3px; 
 }
 
 .container > .form-group:first-of-type { /* This targets the Reset All button's container */
@@ -228,7 +230,7 @@ select[multiple] option {
     padding: 0; 
     box-shadow: none; 
     border: none;
-    margin-bottom: 8px; 
+    margin-bottom: 6px; 
 }
 
 .d-flex { align-items: center; }
