@@ -4,64 +4,87 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Prevent horizontal scroll */
-  /* REMOVED: background-color: #000000 !important; */ /* Let canvas be the background */
   color: #fff;
   font-family: Arial, sans-serif;
 }
 
 body {
-    /* REMOVED: background-color: #000000 !important; */
     /* The actual visual background will come from the canvas or elements on it */
+}
+
+/* Toggle War Button Styling */
+#toggleWarBtn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1001; /* Ensure it's above the UI panel and canvas */
+  padding: 8px 15px;
+  background-color: #ff3333; /* Bright red */
+  color: white;
+  border: 1px solid #ff6666;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: background-color 0.2s ease;
+}
+
+#toggleWarBtn:hover {
+  background-color: #cc0000; /* Darker red on hover */
+}
+
+#toggleWarBtn.deactivated {
+  background-color: #555; /* Grey when deactivated */
+  border-color: #777;
+}
+#toggleWarBtn.deactivated:hover {
+  background-color: #777;
 }
 
 
 h1 {
   text-align: center;
   color: #ff4444; 
-  margin-bottom: 30px;
+  margin-bottom: 20px; /* Reduced margin */
 }
 
-/* Canvas battlefield background */
 canvas#battlefield {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1; /* Canvas should be behind all other content */
+  z-index: -1; 
   width: 100vw;
   height: 100vh; 
-  background-color: transparent; /* Canvas itself is transparent, content on it provides visuals */
+  background-color: transparent; 
 }
 
-/* Main UI Container - Styles for Bootstrap's .container */
 .container {
   position: relative; 
-  z-index: 1; /* UI container is above the canvas */
-  
+  z-index: 1; 
   width: 85vw; 
   max-width: 900px; 
-  min-height: 70vh; 
-  max-height: 90vh; 
-  overflow-y: auto; 
+  /* min-height: 70vh; /* Can be removed if not strictly needed or reduced */
+  max-height: 90vh; /* Keep this to prevent container from exceeding viewport */
+  overflow-y: auto; /* This will add scrollbar TO THE CONTAINER if content overflows max-height */
   
-  margin: 5vh auto; 
-  padding: 30px;
+  margin: 3vh auto; /* Reduced top/bottom margin for more vertical space */
+  padding: 20px; /* Reduced padding */
   
-  background-color: rgba(15, 23, 42, 0.88); /* Semi-transparent UI panel */
+  background-color: rgba(15, 23, 42, 0.88); 
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(255, 68, 68, 0.3); 
-
   display: flex;
   flex-direction: column;
 }
 
 /* Toggle block styling */
 .toggle-block {
-  margin-bottom: 15px; 
+  margin-bottom: 10px; /* Reduced margin */
 }
 
 .toggle-btn {
-  padding: 4px 10px; 
-  font-size: 16px;
+  padding: 3px 8px; /* Slightly reduced padding */
+  font-size: 15px; /* Slightly reduced font size */
   background-color: #555; 
   border: 1px solid #777;
   color: white;
@@ -76,8 +99,8 @@ canvas#battlefield {
 }
 
 .toggle-content {
-  margin-top: 12px;
-  padding: 15px;
+  margin-top: 8px; /* Reduced margin */
+  padding: 12px; /* Reduced padding */
   background-color: rgba(30, 38, 58, 0.7); 
   border-radius: 6px;
   border: 1px solid rgba(56, 70, 100, 0.5);
@@ -89,12 +112,13 @@ canvas#battlefield {
 
 /* Form elements and labels styling */
 .form-group {
-  margin-bottom: 10px; 
+  margin-bottom: 8px; /* Reduced margin */
 }
 
 .form-group label, label.text-white { 
     color: #e2e8f0; 
     font-weight: 500; 
+    margin-bottom: 0.3rem; /* Slightly reduced bottom margin for labels */
 }
 
 .form-control {
@@ -102,6 +126,8 @@ canvas#battlefield {
     color: #e2e8f0; 
     border: 1px solid #334155; 
     border-radius: 5px;
+    padding: 0.375rem 0.65rem; /* Slightly reduced padding */
+    font-size: 0.9rem; /* Slightly reduced font size for inputs */
 }
 
 .form-control::placeholder {
@@ -116,17 +142,30 @@ canvas#battlefield {
 }
 
 select[multiple] {
-  height: 180px; 
+  height: 140px; /* Reduced height significantly */
   background-color: #1e293b;
   color: #e2e8f0;
   border: 1px solid #334155;
+  font-size: 0.9rem; /* Match input font size */
 }
+
+/* Time section selects specific adjustment if still too tall */
+.toggle-content .form-row .col select.form-control {
+    padding: 0.3rem 0.5rem; /* More compact padding for time selects */
+    font-size: 0.85rem; /* Smaller font for time selects */
+}
+.toggle-content .form-row .col label.text-white {
+    font-size: 0.8rem; /* Smaller labels for time selects */
+    margin-bottom: 0.2rem;
+}
+
 
 /* Buttons */
 .btn { 
     border-radius: 5px;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem; /* Slightly reduced padding */
     font-weight: 500;
+    font-size: 0.9rem; /* Slightly reduced font size */
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
@@ -134,43 +173,28 @@ select[multiple] {
     transform: translateY(1px); 
 }
 
-.btn-primary,
-.btn-secondary { 
+.btn-primary, .btn-secondary { 
   background-color: #ff4444 !important; 
-  border: none !important;
-  color: white;
+  border: none !important; color: white;
 }
-
-.btn-primary:hover,
-.btn-secondary:hover {
-  background-color: #cc0000 !important; 
-}
-
-.btn-danger {
-  background-color: #dc3545; 
-  color: white;
-  border: none;
-}
-
-.btn-danger:hover {
-  background-color: #c82333; 
-}
+.btn-primary:hover, .btn-secondary:hover { background-color: #cc0000 !important; }
+.btn-danger { background-color: #dc3545; color: white; border: none; }
+.btn-danger:hover { background-color: #c82333; }
 
 #resetBtn {
-    margin-bottom: 20px; 
+    margin-bottom: 15px; /* Reduced margin */
 }
 
 .toggle-content .btn-primary { 
-    margin-top: 10px;
+    margin-top: 8px; /* Reduced margin */
 }
 
-.container > .form-group:first-of-type { 
-    background-color: transparent;
-    padding: 0;
-    box-shadow: none;
+.container > .form-group:first-of-type { /* This targets the Reset All button's container */
+    background-color: transparent; 
+    padding: 0; 
+    box-shadow: none; 
     border: none;
+    margin-bottom: 15px; /* Ensure it has some margin if #resetBtn margin is removed */
 }
 
-.d-flex {
-    align-items: center; 
-}
+.d-flex { align-items: center; }
