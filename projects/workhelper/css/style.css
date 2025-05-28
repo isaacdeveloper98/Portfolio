@@ -15,17 +15,17 @@ body {
 /* Toggle War Button Styling */
 #toggleWarBtn {
   position: fixed;
-  top: 10px; /* Slightly less from top */
-  left: 10px; /* Slightly less from left */
+  top: 8px; /* Even less from top */
+  left: 8px; /* Even less from left */
   z-index: 1001; 
-  padding: 6px 12px; /* Reduced padding */
+  padding: 4px 8px; /* Further reduced padding */
   background-color: #ff3333; 
   color: white;
   border: 1px solid #ff6666;
-  border-radius: 4px; /* Slightly smaller radius */
+  border-radius: 3px; 
   cursor: pointer;
-  font-size: 13px; /* Reduced font size */
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2); /* Reduced shadow */
+  font-size: 11px; /* Further reduced font size */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2); 
   transition: background-color 0.2s ease;
 }
 
@@ -45,8 +45,9 @@ body {
 h1 {
   text-align: center;
   color: #ff4444; 
-  margin-bottom: 15px; /* Further reduced margin */
-  font-size: 1.75rem; /* Slightly smaller h1 */
+  margin-top: 5px; /* Minimal top margin */
+  margin-bottom: 10px; /* Further reduced margin */
+  font-size: 1.5rem; /* Further smaller h1 */
 }
 
 canvas#battlefield {
@@ -63,38 +64,40 @@ canvas#battlefield {
   position: relative; 
   z-index: 1; 
   width: 85vw; 
-  max-width: 800px; /* Slightly reduced max-width if needed */
-  max-height: 92vh; /* Allow a bit more height for the container itself */
+  max-width: 700px; /* Further reduced max-width */
+  max-height: 96vh; /* Allow container to use almost full viewport height */
   overflow-y: auto; 
   
-  margin: 2vh auto; /* Further reduced top/bottom margin */
-  padding: 15px; /* Further reduced padding */
+  margin: 1vh auto; /* Minimal vertical margin */
+  padding: 10px 12px; /* Further reduced padding, more horizontal than vertical */
   
   background-color: rgba(15, 23, 42, 0.88); 
-  border-radius: 10px; /* Slightly smaller radius */
-  box-shadow: 0 6px 20px rgba(255, 68, 68, 0.25); /* Adjusted shadow */
+  border-radius: 8px; 
+  box-shadow: 0 4px 15px rgba(255, 68, 68, 0.2); 
   display: flex;
   flex-direction: column;
 }
 
 /* Toggle block styling */
 .toggle-block {
-  margin-bottom: 8px; /* Further reduced margin */
+  margin-bottom: 5px; /* Further reduced margin */
 }
 .d-flex.justify-content-between.align-items-center {
-  padding: 4px 0; /* Add some padding to the header of toggle block for better touch */
+  padding: 2px 0; /* Minimal padding for the header of toggle block */
+  min-height: 28px; /* Ensure a minimum touch target / height */
 }
 
 
 .toggle-btn {
-  padding: 2px 6px; /* Further reduced padding */
-  font-size: 14px; /* Further reduced font size */
+  padding: 1px 5px; /* Minimal padding */
+  font-size: 12px; /* Further reduced font size */
+  line-height: 1.2; /* Adjust line height for small button */
   background-color: #555; 
   border: 1px solid #777;
   color: white;
   cursor: pointer;
-  margin-left: 8px; /* Reduced margin */
-  border-radius: 4px;
+  margin-left: 6px; /* Reduced margin */
+  border-radius: 3px;
   transition: background-color 0.2s ease;
 }
 
@@ -103,10 +106,10 @@ canvas#battlefield {
 }
 
 .toggle-content {
-  margin-top: 6px; /* Reduced margin */
-  padding: 10px; /* Further reduced padding */
+  margin-top: 4px; /* Reduced margin */
+  padding: 8px; /* Further reduced padding */
   background-color: rgba(30, 38, 58, 0.7); 
-  border-radius: 5px; /* Smaller radius */
+  border-radius: 4px; /* Smaller radius */
   border: 1px solid rgba(56, 70, 100, 0.5);
 }
 
@@ -115,25 +118,27 @@ canvas#battlefield {
 }
 
 /* Form elements and labels styling */
-.form-group { /* This class is used by Bootstrap and our toggle blocks */
-  margin-bottom: 6px; /* Further reduced margin */
+.form-group { 
+  margin-bottom: 4px; /* Further reduced margin */
 }
 
 .form-group label, label.text-white { 
     color: #e2e8f0; 
-    font-weight: 500; 
-    margin-bottom: 0.2rem; /* Further reduced bottom margin for labels */
-    font-size: 0.85rem; /* Smaller label font size */
+    font-weight: normal; /* Lighter font weight */
+    margin-bottom: 1px; /* Minimal bottom margin for labels */
+    font-size: 0.78rem; /* Further smaller label font size */
+    line-height: 1.3;
 }
 
 .form-control {
     background-color: #1e293b; 
     color: #e2e8f0; 
     border: 1px solid #334155; 
-    border-radius: 4px; /* Smaller radius */
-    padding: 0.3rem 0.5rem; /* Further reduced padding */
-    font-size: 0.85rem; /* Further reduced font size for inputs */
-    height: auto; /* Let padding define height, or set specific small height like calc(1.5em + 0.6rem + 2px) */
+    border-radius: 3px; /* Smaller radius */
+    padding: 0.25rem 0.4rem; /* Further reduced padding */
+    font-size: 0.8rem; /* Further reduced font size for inputs */
+    height: calc(1.5em + 0.5rem + 2px); /* Bootstrap's default small input height */
+    line-height: 1.4;
 }
 
 .form-control::placeholder {
@@ -143,43 +148,52 @@ canvas#battlefield {
 .form-control:focus {
     background-color: #28354e;
     border-color: #ff4444;
-    box-shadow: 0 0 0 0.15rem rgba(255, 68, 68, 0.25); /* Smaller shadow */
+    box-shadow: 0 0 0 0.1rem rgba(255, 68, 68, 0.25); /* Smaller shadow */
     color: #e2e8f0;
 }
 
 select[multiple] {
-  height: 100px; /* Significantly reduced height */
+  height: 80px; /* Drastically reduced height */
   background-color: #1e293b;
   color: #e2e8f0;
   border: 1px solid #334155;
-  font-size: 0.85rem; /* Match input font size */
+  font-size: 0.8rem; /* Match input font size */
+  padding: 0.2rem; /* Minimal padding for select multiple */
 }
+select[multiple] option {
+  padding: 1px 3px; /* Make options themselves more compact */
+  font-size: 0.78rem;
+}
+
 
 /* Time section specific adjustments */
 .toggle-content .form-row {
-  margin-left: -5px; /* Adjust for col padding */
-  margin-right: -5px; /* Adjust for col padding */
+  margin-left: -3px; 
+  margin-right: -3px; 
 }
 .toggle-content .form-row .col {
-  padding-left: 5px; /* Reduced col padding */
-  padding-right: 5px; /* Reduced col padding */
+  padding-left: 3px; 
+  padding-right: 3px; 
+  margin-bottom: 2px; /* Add small margin for rows of selects */
 }
 .toggle-content .form-row .col select.form-control {
-    padding: 0.25rem 0.4rem; /* More compact padding for time selects */
-    font-size: 0.8rem; /* Smaller font for time selects */
+    padding: 0.2rem 0.3rem; 
+    font-size: 0.75rem; 
+    height: calc(1.5em + 0.4rem + 2px); /* Even smaller height */
 }
 .toggle-content .form-row .col label.text-white {
-    font-size: 0.75rem; /* Smaller labels for time selects */
-    margin-bottom: 0.1rem; /* Tiny margin */
+    font-size: 0.7rem; 
+    margin-bottom: 0; 
 }
 
 
 /* Buttons */
 .btn { 
-    border-radius: 4px; /* Smaller radius */
-    padding: 0.3rem 0.6rem; /* Further reduced padding */
-    font-weight: 500;
-    font-size: 0.85rem; /* Further reduced font size */
+    border-radius: 3px; 
+    padding: 0.25rem 0.5rem; /* Further reduced padding */
+    font-weight: normal; /* Lighter font weight */
+    font-size: 0.8rem; /* Further reduced font size */
+    line-height: 1.4;
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
@@ -187,7 +201,7 @@ select[multiple] {
     transform: translateY(1px); 
 }
 
-.btn-primary, .btn-secondary { /* .btn-sm equivalent was used for toggle, this is for main action buttons */
+.btn-primary, .btn-secondary { 
   background-color: #ff4444 !important; 
   border: none !important; color: white;
 }
@@ -195,17 +209,18 @@ select[multiple] {
 
 .btn-danger { /* Reset All button */
   background-color: #dc3545; color: white; border: none;
-  padding: 0.4rem 0.8rem; /* Keep reset button a bit more prominent */
-  font-size: 0.9rem;
+  padding: 0.35rem 0.7rem; /* Slightly more padding than other buttons */
+  font-size: 0.85rem;
 }
 .btn-danger:hover { background-color: #c82333; }
 
 #resetBtn {
-    margin-bottom: 10px; /* Reduced margin */
+    margin-top: 5px; /* Add a bit of top margin */
+    margin-bottom: 8px; /* Reduced margin */
 }
 
 .toggle-content .btn-primary { /* Buttons inside toggle sections */
-    margin-top: 6px; /* Reduced margin */
+    margin-top: 4px; /* Reduced margin */
 }
 
 .container > .form-group:first-of-type { /* This targets the Reset All button's container */
@@ -213,7 +228,7 @@ select[multiple] {
     padding: 0; 
     box-shadow: none; 
     border: none;
-    margin-bottom: 10px; 
+    margin-bottom: 8px; 
 }
 
 .d-flex { align-items: center; }
