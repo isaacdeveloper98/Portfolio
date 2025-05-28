@@ -1,3 +1,4 @@
+// js/timeFormatter.js
 document.addEventListener("DOMContentLoaded", () => {
   function stripAMPM(hourString) {
     return hourString.replace(/\s?(AM|PM)/gi, "").trim();
@@ -8,19 +9,37 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function formatSchedule() {
-    const fromHour = document.querySelector("#fromHour").value;
-    const fromMinute = document.querySelector("#fromMinute").value || "00";
-    const toHour = document.querySelector("#toHour").value;
-    const toMinute = document.querySelector("#toMinute").value || "00";
-    const centerRaw = document.querySelector("#centerName").value;
+    const fromHourElement = document.querySelector("#fromHour");
+    const fromMinuteElement = document.querySelector("#fromMinute");
+    const toHourElement = document.querySelector("#toHour");
+    const toMinuteElement = document.querySelector("#toMinute");
+    const centerNameElement = document.querySelector("#centerName");
+
+    // Ensure elements exist before trying to get their values
+    const fromHour = fromHourElement ? fromHourElement.value : "12";
+    const fromMinute = fromMinuteElement ? fromMinuteElement.value : "00";
+    const toHour = toHourElement ? toHourElement.value : "12";
+    const toMinute = toMinuteElement ? toMinuteElement.value : "00";
+    const centerRaw = centerNameElement ? centerNameElement.value : "";
 
     let schedule = `M-F ${getTimeString(fromHour, fromMinute)}-${getTimeString(toHour, toMinute)}`;
 
     if (centerRaw.trim() !== "") {
-      const cleanedCenter = centerRaw.replace(/center/gi, "").trim().toUpperCase();
-      schedule += ` (${cleanedCenter})`;
+      // Use the cleaning function from main.js
+      if (window.cleanCenterNameForTimeFormat) {
+        const cleanedCenter = window.cleanCenterNameForTimeFormat(centerRaw);
+        if (cleanedCenter) { // Add parenthesis only if cleanedCenter is not empty
+            schedule += ` (${cleanedCenter})`;
+        }
+      } else {
+        // Fallback or error if the function isn't available (shouldn't happen if main.js loads first)
+        console.warn("cleanCenterNameForTimeFormat function not found. Using basic cleaning for center name.");
+        const basicCleaned = centerRaw.replace(/center/gi, "").trim().toUpperCase();
+        if (basicCleaned) {
+            schedule += ` (${basicCleaned})`;
+        }
+      }
     }
-
     return schedule;
   }
 
@@ -29,5 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
     navigator.clipboard.writeText(schedule);
   }
 
-  document.querySelector("#copyTimeBtn").addEventListener("click", copySchedule);
+  const copyTimeBtn = document.querySelector("#copyTimeBtn");
+  if (copyTimeBtn) {
+    copyTimeBtn.addEventListener("click", copySchedule);
+  }
 });

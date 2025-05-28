@@ -1,16 +1,24 @@
-
 /* General Body Styling */
-body {
-  background-color: #000;
-  color: #fff;
-  font-family: Arial, sans-serif;
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  /* REMOVED: background-color: #000000 !important; */ /* Let canvas be the background */
+  color: #fff;
+  font-family: Arial, sans-serif;
 }
+
+body {
+    /* REMOVED: background-color: #000000 !important; */
+    /* The actual visual background will come from the canvas or elements on it */
+}
+
 
 h1 {
   text-align: center;
-  color: #ff4444;
+  color: #ff4444; 
+  margin-bottom: 30px;
 }
 
 /* Canvas battlefield background */
@@ -18,112 +26,151 @@ canvas#battlefield {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -1; /* Canvas should be behind all other content */
   width: 100vw;
-  height: 100vh;
+  height: 100vh; 
+  background-color: transparent; /* Canvas itself is transparent, content on it provides visuals */
+}
+
+/* Main UI Container - Styles for Bootstrap's .container */
+.container {
+  position: relative; 
+  z-index: 1; /* UI container is above the canvas */
+  
+  width: 85vw; 
+  max-width: 900px; 
+  min-height: 70vh; 
+  max-height: 90vh; 
+  overflow-y: auto; 
+  
+  margin: 5vh auto; 
+  padding: 30px;
+  
+  background-color: rgba(15, 23, 42, 0.88); /* Semi-transparent UI panel */
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(255, 68, 68, 0.3); 
+
+  display: flex;
+  flex-direction: column;
 }
 
 /* Toggle block styling */
+.toggle-block {
+  margin-bottom: 15px; 
+}
+
 .toggle-btn {
-  padding: 2px 8px;
+  padding: 4px 10px; 
   font-size: 16px;
-  background-color: #666;
-  border: none;
+  background-color: #555; 
+  border: 1px solid #777;
   color: white;
   cursor: pointer;
-  margin-left: 5px;
-  border-radius: 3px;
+  margin-left: 10px; 
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background-color: #777;
 }
 
 .toggle-content {
-  margin-top: 10px;
+  margin-top: 12px;
+  padding: 15px;
+  background-color: rgba(30, 38, 58, 0.7); 
+  border-radius: 6px;
+  border: 1px solid rgba(56, 70, 100, 0.5);
 }
 
 .toggle-content.hidden {
   display: none;
 }
 
-/* Buttons and form elements */
-.btn-primary {
-  background-color: #ff4444;
-  border: none;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #cc0000;
-}
-
-.btn-danger {
-  background-color: #990000;
-  border: none;
-}
-
-.btn-danger:hover {
-  background-color: #660000;
-}
-
+/* Form elements and labels styling */
 .form-group {
-  background-color: rgba(30, 30, 30, 0.9);
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+  margin-bottom: 10px; 
+}
+
+.form-group label, label.text-white { 
+    color: #e2e8f0; 
+    font-weight: 500; 
+}
+
+.form-control {
+    background-color: #1e293b; 
+    color: #e2e8f0; 
+    border: 1px solid #334155; 
+    border-radius: 5px;
+}
+
+.form-control::placeholder {
+    color: #64748b; 
+}
+
+.form-control:focus {
+    background-color: #28354e;
+    border-color: #ff4444;
+    box-shadow: 0 0 0 0.2rem rgba(255, 68, 68, 0.25);
+    color: #e2e8f0;
 }
 
 select[multiple] {
-  height: 160px;
+  height: 180px; 
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border: 1px solid #334155;
 }
 
-.container-ui {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
-  margin: 30px auto;
-  background: rgba(0, 0, 0, 0.85);
-  padding: 20px;
-  border-radius: 10px;
+/* Buttons */
+.btn { 
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-body {
-  background-color: black;
-}
-
-canvas#battlefield {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
+.btn:active {
+    transform: translateY(1px); 
 }
 
 .btn-primary,
-.btn-secondary {
-  background-color: #ff4444 !important;
+.btn-secondary { 
+  background-color: #ff4444 !important; 
   border: none !important;
   color: white;
 }
 
 .btn-primary:hover,
 .btn-secondary:hover {
-  background-color: #cc0000 !important;
+  background-color: #cc0000 !important; 
 }
 
 .btn-danger {
-  background-color: #ff0000;
+  background-color: #dc3545; 
   color: white;
   border: none;
 }
 
 .btn-danger:hover {
-  background-color: #990000;
+  background-color: #c82333; 
 }
 
-html, body {
-  height: 100%;
-  background-color: black !important;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+#resetBtn {
+    margin-bottom: 20px; 
+}
+
+.toggle-content .btn-primary { 
+    margin-top: 10px;
+}
+
+.container > .form-group:first-of-type { 
+    background-color: transparent;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+}
+
+.d-flex {
+    align-items: center; 
 }

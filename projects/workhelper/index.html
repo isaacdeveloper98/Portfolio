@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,21 +8,18 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
 </head>
 <body>
+  <button id="toggleWarBtn" style="position: fixed; top: 10px; left: 10px; z-index: 1000; padding: 8px 12px; background-color: #ff4444; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">Toggle War</button>
+
   <div class="container mt-4">
     <h1 class="text-white">Work Helper Tool</h1>
 
-    <!-- Full sections restored -->
-
-    <!-- Reset All Button -->
-    <div class="form-group">
-      <button id="resetBtn" class="btn btn-danger mt-3">Reset All</button>
+    <div class="form-group"> 
+      <button id="resetBtn" class="btn btn-danger mt-3 mb-3">Reset All</button> 
     </div>
-  </div>
 
-    <!-- 106S Button -->
     <div class="form-group toggle-block">
       <div class="d-flex justify-content-between align-items-center">
-        <label class="text-white">106S</label>
+        <label class="text-white mb-0">106S</label> 
         <button class="btn btn-sm btn-secondary toggle-btn" type="button">−</button>
       </div>
       <div class="toggle-content">
@@ -31,10 +27,9 @@
       </div>
     </div>
 
-    <!-- Name Section -->
     <div class="form-group toggle-block">
       <div class="d-flex justify-content-between align-items-center">
-        <label for="name" class="text-white">Name</label>
+        <label for="name" class="text-white mb-0">Name</label>
         <button class="btn btn-sm btn-secondary toggle-btn" type="button">−</button>
       </div>
       <div class="toggle-content">
@@ -43,10 +38,9 @@
       </div>
     </div>
 
-    <!-- Center Name Section -->
     <div class="form-group toggle-block">
       <div class="d-flex justify-content-between align-items-center">
-        <label for="centerName" class="text-white">Center Name</label>
+        <label for="centerName" class="text-white mb-0">Center Name</label>
         <button class="btn btn-sm btn-secondary toggle-btn" type="button">−</button>
       </div>
       <div class="toggle-content">
@@ -55,10 +49,9 @@
       </div>
     </div>
 
- <!-- Phone Format Section -->
     <div class="form-group toggle-block">
       <div class="d-flex justify-content-between align-items-center">
-        <label for="phoneInput" class="text-white">Phone Numbers</label>
+        <label for="phoneInput" class="text-white mb-0">Phone Numbers</label>
         <button class="btn btn-sm btn-secondary toggle-btn" type="button">−</button>
       </div>
       <div class="toggle-content">
@@ -67,10 +60,9 @@
       </div>
     </div>
 
-    <!-- Time Section -->
     <div class="form-group toggle-block">
       <div class="d-flex justify-content-between align-items-center">
-        <label class="text-white">Time</label>
+        <label class="text-white mb-0">Time</label>
         <button class="btn btn-sm btn-secondary toggle-btn" type="button">−</button>
       </div>
       <div class="toggle-content">
@@ -112,10 +104,9 @@
       </div>
     </div>
 
-    <!-- Languages Section -->
     <div class="form-group toggle-block">
       <div class="d-flex justify-content-between align-items-center">
-        <label for="languageSelect" class="text-white">Languages</label>
+        <label for="languageSelect" class="text-white mb-0">Languages</label>
         <button class="btn btn-sm btn-secondary toggle-btn" type="button">−</button>
       </div>
       <div class="toggle-content">
@@ -129,8 +120,7 @@
         <button id="copyLanguagesBtn" class="btn btn-primary mt-2">Copy Languages</button>
       </div>
     </div>
-
-  <canvas id="battlefield"></canvas>
+  </div> <canvas id="battlefield"></canvas>
 
   <script src="js/main.js"></script>
   <script src="js/timeFormatter.js"></script>
