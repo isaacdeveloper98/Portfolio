@@ -64,15 +64,15 @@ function resizeCanvas() {
 }
 
 const CHARACTER_VISUAL_HEIGHT = { 
-    human: 20, elf: 23, goblin: 18, undead: 22, dragon: 30 // Approx visual height for dragon for click
+    human: 20, elf: 23, goblin: 18, undead: 22, dragon: 30 
 };
-// Define click areas (width, height) for entities for more accurate clicking
-const ENTITY_CLICK_AREA = {
-    human: { width: 15, height: CHARACTER_VISUAL_HEIGHT.human + 5 },
-    elf: { width: 15, height: CHARACTER_VISUAL_HEIGHT.elf + 5 },
-    goblin: { width: 18, height: CHARACTER_VISUAL_HEIGHT.goblin + 5 },
-    undead: { width: 15, height: CHARACTER_VISUAL_HEIGHT.undead + 5 },
-    dragon: { width: 35 * 1.3, height: CHARACTER_VISUAL_HEIGHT.dragon * 1.3 } // Dragons are scaled
+
+const ENTITY_CLICK_AREA = { // Defines the clickable bounding box (width, height) around the entity's visual center
+    human: { width: 12, height: CHARACTER_VISUAL_HEIGHT.human + 4 }, // width is approx body width
+    elf: { width: 10, height: CHARACTER_VISUAL_HEIGHT.elf + 4 },
+    goblin: { width: 16, height: CHARACTER_VISUAL_HEIGHT.goblin + 4 },
+    undead: { width: 10, height: CHARACTER_VISUAL_HEIGHT.undead + 4 },
+    dragon: { width: 30 * 1.3, height: 20 * 1.3 } // Approx body width/height of dragon, scaled
 };
 
 
@@ -467,6 +467,53 @@ function toggleAnimation() {
     }
 }
 
+// --- CLICK TO KILL FUNCTIONALITY ---
+function handleCanvasClick(event) {
+    if (!isWarAnimationActive || !canvas) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const clickX = event.clientX - rect.left;
+    const clickY = event.clientY - rect.top;
+
+    console.log(`Click at: (${clickX.toFixed(0)}, ${clickY.toFixed(0)})`); // Log click coordinates
+
+    for (let i = entities.length - 1; i >= 0; i--) {
+        const entity = entities[i];
+        if (entity.state === 'dying' || entity.state === 'dead') continue;
+
+        const clickArea = ENTITY_CLICK_AREA[entity.type] || { width: 20, height: 30 }; // Default click area
+
+        let entityCenterX = entity.x;
+        let entityCenterY;
+
+        if (entity.type === 'dragon') {
+            entityCenterY = entity.y; // Dragon's y is its visual center
+        } else {
+            // For ground units, y is their feet. Visual center is y - half their visual height.
+            entityCenterY = entity.y - (CHARACTER_VISUAL_HEIGHT[entity.type] / 2);
+        }
+        
+        // Bounding box for click detection
+        const entityLeft = entityCenterX - clickArea.width / 2;
+        const entityRight = entityCenterX + clickArea.width / 2;
+        const entityTop = entityCenterY - clickArea.height / 2;
+        const entityBottom = entityCenterY + clickArea.height / 2;
+
+        // console.log(`Checking ${entity.type} at (${entity.x.toFixed(0)}, ${entity.y.toFixed(0)}). Box: L${entityLeft.toFixed(0)} R${entityRight.toFixed(0)} T${entityTop.toFixed(0)} B${entityBottom.toFixed(0)}`);
+
+
+        if (clickX >= entityLeft && clickX <= entityRight &&
+            clickY >= entityTop && clickY <= entityBottom) {
+            
+            console.log(`Clicked on ${entity.type} (ID: ${entity.id})! Setting HP to 0.`);
+            entity.hp = 0; 
+            // The existing logic in updateEntities will handle changing state to 'dying'
+            break; // Process only one entity per click
+        }
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', (event) => {
     if (canvas && ctx) {
         if (toggleWarBtn) { 
@@ -475,48 +522,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
             toggleWarBtn.addEventListener('click', toggleAnimation);
         } else { console.error("warBackground.js: Toggle button not found!"); }
         
-        resizeCanvas(); // Initial setup of dimensions and terrain
+        resizeCanvas(); 
         lastFrameTime = performance.now(); 
         lastSpawnTime = performance.now() - spawnInterval -1; 
         
+        // Add the click listener for the canvas
+        canvas.addEventListener('click', handleCanvasClick);
+        console.log("warBackground.js: Click listener for canvas added.");
+
         animationFrameId = requestAnimationFrame(animate); 
     } else { 
         console.error("warBackground.js: Canvas or context not found. Animation NOT started."); 
     }
 });
-```
-
-**Key Changes Made:**
-
-1.  **`ENTITY_CLICK_AREA` Constant:**
-    * Added a new constant `ENTITY_CLICK_AREA` to define approximate clickable bounding boxes (width and height) for each entity type. This makes hit detection more accurate than a generic radius.
-    * The dragon's click area dimensions are scaled by `1.3` to match its visual scaling.
-
-2.  **Canvas Click Event Listener:**
-    * Added within the `DOMContentLoaded` listener, after `canvas` and `ctx` are confirmed to exist.
-    * `canvas.addEventListener('click', function(event) { ... });`
-
-3.  **`handleCanvasClick(event)` Function:**
-    * This new function is called by the click event listener.
-    * It first checks if `isWarAnimationActive` is `false`. If so, it does nothing.
-    * It gets the mouse click coordinates relative to the canvas:
-        ```javascript
-        const rect = canvas.getBoundingClientRect();
-        const clickX = event.clientX - rect.left;
-        const clickY = event.clientY - rect.top;
-        ```
-    * It then iterates through the `entities` array (in reverse, so if entities overlap, the one visually on top is more likely to be selected, though this isn't perfectly guaranteed without z-sorting).
-    * For each entity:
-        * It calculates the entity's visual center `entityCenterX` and `entityCenterY`.
-            * For ground units, `entityCenterY` is `entity.y - (CHARACTER_VISUAL_HEIGHT[entity.type] / 2)`.
-            * For dragons, `entityCenterY` is simply `entity.y`.
-        * It gets the `clickWidth` and `clickHeight` from `ENTITY_CLICK_AREA`.
-        * It checks if the `clickX` and `clickY` are within the rectangle defined by:
-            * `entityCenterX - clickWidth / 2`
-            * `entityCenterY - clickHeight / 2`
-            * `clickWidth`
-            * `clickHeight`
-        * If a hit is detected:
-            * The entity's `hp` is set to `0`.
-            * `console.log` is added to indicate which entity was clicked and killed.
-            * The loop is broken (`break;`) so only one entity is affected per click.
