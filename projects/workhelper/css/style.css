@@ -202,6 +202,29 @@ select[multiple] option {
     transform: translateY(1px); 
 }
 
+/* NEW: Extra small button for presets */
+.btn-xxs {
+  padding: 0.1rem 0.4rem;
+  font-size: 0.7rem;
+  line-height: 1.2;
+}
+
+/* Day Selector Buttons */
+#day-selector .btn-group-toggle .btn {
+  padding: .25rem .35rem;
+  font-size: .75rem;
+  line-height: 1;
+  flex: 1 1 auto; /* Allow buttons to grow and fill width */
+}
+
+/* Hide the actual checkbox form input */
+#day-selector .btn input[type="checkbox"] {
+  position: absolute;
+  clip: rect(0,0,0,0);
+  pointer-events: none;
+}
+
+
 .btn-primary, .btn-secondary { 
   background-color: #ff4444 !important; 
   border: none !important; color: white;

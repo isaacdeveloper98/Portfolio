@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function cleanCenterNameForTimeFormat(rawName) {
     if (!rawName) return "";
-    return rawName.replace(/center/gi, "").trim().toUpperCase();
+    const withoutPrefix = rawName.replace(/^[a-zA-Z]{2}_/, ""); 
+    return withoutPrefix.replace(/center/gi, "").trim().toUpperCase();
   }
 
   function copyFullCenterName() {
@@ -36,20 +37,30 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("select").forEach(select => {
       if (select) {
         if (select.multiple) {
-          // For multi-select (like languages), deselect all options
           Array.from(select.options).forEach(option => option.selected = false);
         } else {
-          // For single-select (like time dropdowns), set to the first option
           select.selectedIndex = 0; 
         }
       }
     });
 
-    // --- The part that handled toggle states has been REMOVED ---
-    // console.log("Inputs and selects have been reset.");
+    // Reset day checkboxes to new default (M-F checked, SA/SU unchecked)
+    document.querySelectorAll("#day-selector .day-checkbox").forEach(checkbox => {
+      const isWeekend = checkbox.value === 'SA' || checkbox.value === 'SU';
+      checkbox.checked = !isWeekend;
+
+      const label = checkbox.closest('label');
+      if (label) {
+        if (isWeekend) {
+          label.classList.remove('active');
+        } else {
+          label.classList.add('active');
+        }
+      }
+    });
   }
 
-  // Toggle button functionality (remains the same)
+  // Toggle button functionality
   document.querySelectorAll(".toggle-btn").forEach(button => {
     button.addEventListener("click", () => {
       const content = button.closest(".toggle-block").querySelector(".toggle-content");
@@ -60,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Event Listeners (with null checks for robustness)
+  // Event Listeners
   const copyNameBtn = document.querySelector("#copyNameBtn");
   if (copyNameBtn) {
     copyNameBtn.addEventListener("click", () => copyText("#name"));

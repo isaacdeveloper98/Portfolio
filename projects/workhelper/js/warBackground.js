@@ -64,17 +64,8 @@ function resizeCanvas() {
 }
 
 const CHARACTER_VISUAL_HEIGHT = { 
-    human: 20, elf: 23, goblin: 18, undead: 22, dragon: 30 
+    human: 20, elf: 23, goblin: 18, undead: 22, dragon: 0
 };
-
-const ENTITY_CLICK_AREA = { // Defines the clickable bounding box (width, height) around the entity's visual center
-    human: { width: 12, height: CHARACTER_VISUAL_HEIGHT.human + 4 }, // width is approx body width
-    elf: { width: 10, height: CHARACTER_VISUAL_HEIGHT.elf + 4 },
-    goblin: { width: 16, height: CHARACTER_VISUAL_HEIGHT.goblin + 4 },
-    undead: { width: 10, height: CHARACTER_VISUAL_HEIGHT.undead + 4 },
-    dragon: { width: 30 * 1.3, height: 20 * 1.3 } // Approx body width/height of dragon, scaled
-};
-
 
 function drawHuman(x, y, entity) { 
   if (!ctx) return; ctx.save(); ctx.translate(x, y);
@@ -112,10 +103,10 @@ function drawDragon(x, y, entity) {
   ctx.fillStyle = entity.dragonColor || "#B22222"; 
   ctx.beginPath(); ctx.moveTo(-15, 0); ctx.lineTo(0, -5); ctx.lineTo(10, 0); ctx.lineTo(15, -8); ctx.lineTo(12, -6); ctx.lineTo(10, -2); ctx.lineTo(5, 5); ctx.lineTo(-15, 5); ctx.closePath(); ctx.fill(); 
   const wingAngle = Math.sin(Date.now() * 0.005 + (entity.id || entity.y)) * 0.3; 
-  let wingColor = "#800000"; 
-  if (entity.dragonColor === 'blue') wingColor = '#00008B'; 
-  else if (entity.dragonColor === 'green') wingColor = '#006400';
-  ctx.fillStyle = wingColor; 
+  
+  // Use the wingColor property from the entity, with a fallback
+  ctx.fillStyle = entity.wingColor || '#800000'; 
+  
   ctx.beginPath(); ctx.moveTo(0, -4); ctx.lineTo(-10, -15 + Math.sin(wingAngle) * 10); ctx.lineTo(-20, -5 + Math.sin(wingAngle) * 5); ctx.closePath(); ctx.fill(); 
   ctx.beginPath(); ctx.moveTo(2, -3); ctx.lineTo(5, -13 + Math.sin(wingAngle + 0.5) * 8); ctx.lineTo(-5, -3 + Math.sin(wingAngle + 0.5) * 4); ctx.closePath(); ctx.fill(); 
   ctx.fillStyle = entity.dragonColor || "#B22222"; 
@@ -172,7 +163,7 @@ function spawnEntity() {
   if (!canvas || entities.length >= maxEntities) { return; }
   const types = ["human", "goblin", "dragon", "elf", "undead"];
   const type = types[Math.floor(Math.random() * types.length)];
-  let faction, hp, attackDamage, attackRange, color, entitySpeed, dragonColor;
+  let faction, hp, attackDamage, attackRange, color, entitySpeed, dragonColor, wingColor;
   const baseSpeed = Math.random() * 0.5 + 0.2;
   switch(type) {
     case "human": faction = FACTION_ALLIANCE; hp = 100; attackDamage = 10; attackRange = ATTACK_RANGE_MELEE; color = "#aec6cf"; entitySpeed = baseSpeed * 1.1; break;
@@ -181,9 +172,14 @@ function spawnEntity() {
     case "undead": faction = FACTION_HORDE; hp = 70; attackDamage = 7; attackRange = ATTACK_RANGE_MELEE; color = "#6c757d"; entitySpeed = baseSpeed * 0.9; break; 
     case "dragon": 
       faction = FACTION_DRAGON; 
-      const dragonSubTypes = [ {c: 'red', colorVal: '#B22222', dmg: 20, hpVal: 250}, {c: 'blue', colorVal: '#4169E1', dmg: 18, hpVal: 220}, {c: 'green', colorVal: '#2E8B57', dmg: 15, hpVal: 200}];
+      const dragonSubTypes = [
+          { c: 'red', colorVal: '#B22222', wingColorVal: '#8B0000', dmg: 20, hpVal: 250 },
+          { c: 'blue', colorVal: '#4169E1', wingColorVal: '#00008B', dmg: 18, hpVal: 220 },
+          { c: 'green', colorVal: '#2E8B57', wingColorVal: '#006400', dmg: 15, hpVal: 200 }
+      ];
       const chosenDragon = dragonSubTypes[Math.floor(Math.random() * dragonSubTypes.length)];
-      dragonColor = chosenDragon.colorVal; 
+      dragonColor = chosenDragon.colorVal;
+      wingColor = chosenDragon.wingColorVal;
       hp = chosenDragon.hpVal; attackDamage = chosenDragon.dmg; attackRange = ATTACK_RANGE_DRAGON_BREATH; 
       color = dragonColor; 
       entitySpeed = baseSpeed * 1.5;
@@ -198,7 +194,7 @@ function spawnEntity() {
   const direction = initialX < W_WIDTH / 2 ? 1 : -1; 
   entities.push({ 
     x: initialX, y: initialY, type, faction, hp, maxHp: hp, attackDamage, attackRange, 
-    color, dragonColor, direction, initialDirection: direction, 
+    color, dragonColor, wingColor, direction, initialDirection: direction, 
     speed: entitySpeed, breathingFire: type === "dragon" && Math.random() < 0.45, 
     id: Date.now() + Math.random() * 1000, state: 'moving', 
     target: null, lastAttackTime: 0, deathTimer: 0,
@@ -467,53 +463,6 @@ function toggleAnimation() {
     }
 }
 
-// --- CLICK TO KILL FUNCTIONALITY ---
-function handleCanvasClick(event) {
-    if (!isWarAnimationActive || !canvas) return;
-
-    const rect = canvas.getBoundingClientRect();
-    const clickX = event.clientX - rect.left;
-    const clickY = event.clientY - rect.top;
-
-    console.log(`Click at: (${clickX.toFixed(0)}, ${clickY.toFixed(0)})`); // Log click coordinates
-
-    for (let i = entities.length - 1; i >= 0; i--) {
-        const entity = entities[i];
-        if (entity.state === 'dying' || entity.state === 'dead') continue;
-
-        const clickArea = ENTITY_CLICK_AREA[entity.type] || { width: 20, height: 30 }; // Default click area
-
-        let entityCenterX = entity.x;
-        let entityCenterY;
-
-        if (entity.type === 'dragon') {
-            entityCenterY = entity.y; // Dragon's y is its visual center
-        } else {
-            // For ground units, y is their feet. Visual center is y - half their visual height.
-            entityCenterY = entity.y - (CHARACTER_VISUAL_HEIGHT[entity.type] / 2);
-        }
-        
-        // Bounding box for click detection
-        const entityLeft = entityCenterX - clickArea.width / 2;
-        const entityRight = entityCenterX + clickArea.width / 2;
-        const entityTop = entityCenterY - clickArea.height / 2;
-        const entityBottom = entityCenterY + clickArea.height / 2;
-
-        // console.log(`Checking ${entity.type} at (${entity.x.toFixed(0)}, ${entity.y.toFixed(0)}). Box: L${entityLeft.toFixed(0)} R${entityRight.toFixed(0)} T${entityTop.toFixed(0)} B${entityBottom.toFixed(0)}`);
-
-
-        if (clickX >= entityLeft && clickX <= entityRight &&
-            clickY >= entityTop && clickY <= entityBottom) {
-            
-            console.log(`Clicked on ${entity.type} (ID: ${entity.id})! Setting HP to 0.`);
-            entity.hp = 0; 
-            // The existing logic in updateEntities will handle changing state to 'dying'
-            break; // Process only one entity per click
-        }
-    }
-}
-
-
 document.addEventListener('DOMContentLoaded', (event) => {
     if (canvas && ctx) {
         if (toggleWarBtn) { 
@@ -522,14 +471,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
             toggleWarBtn.addEventListener('click', toggleAnimation);
         } else { console.error("warBackground.js: Toggle button not found!"); }
         
-        resizeCanvas(); 
+        resizeCanvas(); // Initial setup of dimensions and terrain
         lastFrameTime = performance.now(); 
         lastSpawnTime = performance.now() - spawnInterval -1; 
         
-        // Add the click listener for the canvas
-        canvas.addEventListener('click', handleCanvasClick);
-        console.log("warBackground.js: Click listener for canvas added.");
-
         animationFrameId = requestAnimationFrame(animate); 
     } else { 
         console.error("warBackground.js: Canvas or context not found. Animation NOT started."); 
