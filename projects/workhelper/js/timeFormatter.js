@@ -71,4 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#copyTimeBtn").addEventListener("click", copySchedule);
   document.querySelector("#preset8to5Btn").addEventListener("click", () => setTime("8", "00", "5", "00"));
   document.querySelector("#preset3to7Btn").addEventListener("click", () => setTime("3", "00", "7", "00"));
+  document.querySelector("#preset230to7Btn").addEventListener("click", () => setTime("2", "30", "7", "00"));
+  document.querySelector("#preset8to8Btn").addEventListener("click", () => setTime("8", "00", "8", "00"));
+  document.querySelector("#preset11to6Btn").addEventListener("click", () => setTime("11", "00", "6", "00"));
+  document.querySelector("#preset9to6Btn").addEventListener("click", () => setTime("9", "00", "6", "00"));
 });
